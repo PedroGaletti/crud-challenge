@@ -35,7 +35,7 @@ func (c *AccountController) Store(ctx *gin.Context) {
 	}
 
 	if len(account.DocumentNumber) == 0 {
-		helper.BadRequestBodyReponse(ctx, errors.New("You passed an empty document number"))
+		helper.BadRequestBodyReponse(ctx, errors.New("you passed an empty document number"))
 		return
 	}
 
@@ -49,16 +49,11 @@ func (c *AccountController) Store(ctx *gin.Context) {
 
 // Show: Get a specific account from database and return the information
 func (c *AccountController) Show(ctx *gin.Context) {
-	qParam := ctx.Query("accountId")
+	pId := ctx.Param("id")
 
-	if len(qParam) == 0 {
-		helper.BadRequestBodyReponse(ctx, errors.New("You passed an empty accountId query param"))
-		return
-	}
-
-	id, err := strconv.ParseInt(qParam, 10, 64)
+	id, err := strconv.ParseInt(pId, 10, 64)
 	if err != nil {
-		helper.BadRequestBodyReponse(ctx, errors.New("You passed an invalid accountId query param"))
+		helper.BadRequestBodyReponse(ctx, errors.New("you passed an invalid accountId query param"))
 		return
 	}
 

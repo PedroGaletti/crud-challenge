@@ -1,6 +1,7 @@
 package transactions
 
 import (
+	"errors"
 	"pismo/helper"
 
 	"github.com/gin-gonic/gin"
@@ -27,6 +28,11 @@ func (c *TransactionController) Store(ctx *gin.Context) {
 
 	if err := ctx.BindJSON(&transaction); err != nil {
 		helper.BadRequestBodyReponse(ctx, err)
+		return
+	}
+
+	if transaction.Amount == 0 {
+		helper.BadRequestBodyReponse(ctx, errors.New("amount can't be zero"))
 		return
 	}
 

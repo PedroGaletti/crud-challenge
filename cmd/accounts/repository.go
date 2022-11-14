@@ -11,7 +11,7 @@ const (
 // IAccountRepository: interface of Account repository
 type IAccountRepository interface {
 	Create(*Account) error
-	FindOne(int64) (Account, error)
+	FindOne(int64) (*Account, error)
 }
 
 // AccountRepository: struct of Account repository
@@ -30,10 +30,10 @@ func (r *AccountRepository) Create(account *Account) error {
 }
 
 // FindOne: get a specific account inside the database
-func (r *AccountRepository) FindOne(id int64) (Account, error) {
+func (r *AccountRepository) FindOne(id int64) (*Account, error) {
 	account := Account{}
 
-	err := r.db.Table(tbAccounts).Model(&Account{}).Where("id = ?", id).Error
+	err := r.db.Table(tbAccounts).Model(&Account{}).Where("id = ?", id).Find(&account).Error
 
-	return account, err
+	return &account, err
 }

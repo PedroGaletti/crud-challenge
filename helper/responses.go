@@ -23,7 +23,7 @@ func BadRequestBodyReponse(ctx *gin.Context, err error) {
 }
 
 func NoContentResponse(ctx *gin.Context, err error) {
-	ctx.AbortWithStatusJSON(http.StatusOK, DefaultReponse{Message: fmt.Sprintf(noContent, err.Error())})
+	ctx.AbortWithStatusJSON(http.StatusNoContent, DefaultReponse{Message: fmt.Sprintf(noContent, err.Error())})
 }
 
 func OkDataResponse(ctx *gin.Context, data interface{}) {

@@ -7,5 +7,5 @@ import (
 // Router : starting Account handler
 func Router(r gin.IRoutes, accountController IAccountController) {
 	r.POST("", accountController.Store)
-	r.GET("/:accountId", accountController.Show)
+	r.GET("/:id", accountController.Show)
 }

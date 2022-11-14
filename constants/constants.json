@@ -1,0 +1,20 @@
+{
+  "operations": {
+    "spot": {
+      "id": 1,
+      "slug": "COMPRA A VISTA"
+    },
+    "installments": {
+      "id": 2,
+      "slug": "COMPRA PARCELADA"
+    },
+    "withdraw": {
+      "id": 3,
+      "slug": "SAQUE"
+    },
+    "payment": {
+      "id": 4,
+      "slug": "PAGAMENTO"
+    }
+  }
+}

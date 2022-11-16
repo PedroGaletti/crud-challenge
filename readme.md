@@ -1,6 +1,6 @@
 ## Pismo Challenge
 
-This project is an API REST and this is a challenge from Pismo company to store accounts and your transactions
+This project is an API REST and this is a challenge from Pismo to store accounts and your transactions
 
 ![Build Badge](https://img.shields.io/github/workflow/status/PedroGaletti/pismo-challenge/pismo)
 [![Codecov Coverage Badge](https://img.shields.io/codecov/c/gh/PedroGaletti/pismo-challenge)](https://img.shields.io/codecov/c/gh/PedroGaletti/pismo-challenge)

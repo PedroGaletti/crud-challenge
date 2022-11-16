@@ -21,13 +21,13 @@ var (
 
 func main() {
 	// * Configure *
-	log.Info().Msg("Setting logs configure...")
 	log.Logger = log.Output(zerolog.ConsoleWriter{TimeFormat: "02/01/2006 15:04:05", Out: os.Stderr})
 	logLevel, _ := zerolog.ParseLevel(env.LogLevel)
 	zerolog.SetGlobalLevel(logLevel)
+	log.Info().Msg("Logs configured...")
 
 	// * Database *
-	log.Info().Msg("Configuration databases...")
+	log.Info().Msg("Configuring database...")
 	database, err := db.InitMyqlDb(env.SqlUser, env.SqlPassword, env.SqlHost, env.SqlPort, env.SqlDb)
 	if err != nil {
 		log.Panic().Msg(fmt.Sprintf("Database connection error: %s", err))

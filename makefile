@@ -25,5 +25,5 @@ clean:
 	@echo "Cleaning up project..."
 	@rm -rf ./vendor
 	@rm -rf ./go.sum
-	@rm -rf ./accounts
+	@rm -rf ./pismo
 	@echo "Project cleaned successfully."

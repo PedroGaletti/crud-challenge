@@ -63,8 +63,30 @@ make run
 ## URL Requests
 
 - [POST](http://localhost:8080/accounts) - /accounts
+```
+Body Request
+{
+  "document_number": "12345678900"
+}
+```
 - [GET](http://localhost:8080/accounts/:accountId) - /accounts/:accountId
+```
+Body Response
+{
+  "id": 1,
+  "document_number": "12345678900"
+}
+```
 - [POST](http://localhost:8080/transactions) - /transactions
+```
+Body Request
+{
+  "account_id": 1,
+  "operation_id": 3,
+  "amount": 12345
+}
+amount need be int value without commas or dots
+```
 
 ## Author
 

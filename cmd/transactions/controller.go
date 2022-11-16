@@ -36,6 +36,10 @@ func (c *TransactionController) Store(ctx *gin.Context) {
 		return
 	}
 
+	if transaction.OperationID != 4 {
+		transaction.Amount = -(transaction.Amount)
+	}
+
 	if err := c.repository.Create(transaction); err != nil {
 		helper.InternalServerErrorResponse(ctx, err)
 		return

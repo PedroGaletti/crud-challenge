@@ -27,7 +27,7 @@ func NoContentResponse(ctx *gin.Context, err error) {
 }
 
 func OkDataResponse(ctx *gin.Context, data interface{}) {
-	ctx.JSON(http.StatusOK, DefaultDataResponse{Data: data})
+	ctx.JSON(http.StatusOK, data)
 }
 
 func OkResponse(ctx *gin.Context) {

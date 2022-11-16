@@ -16,7 +16,6 @@ This project is an API REST and this is a challenge from Pismo company to store 
 
 ```
 $PROJECT_ROOT
-├── assets               # Image files
 ├── cmd
 │   └── accounts         # Sequence and stats api logic
 │   └── operations       # Operation model

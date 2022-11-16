@@ -16,9 +16,10 @@ import (
 )
 
 var (
-	account_id   = 1
-	operation_id = 1
-	amount       = 5
+	account_id           = 1
+	operation_id         = 1
+	payment_operation_id = 4
+	amount               = 5
 )
 
 type Suite struct {
@@ -73,16 +74,16 @@ func (s *Suite) TestStore() {
 	internalRequestBody := `{"account_id": 1, "operation_id": 1, "amount": 5}`
 	internalBody := strings.NewReader(string(internalRequestBody))
 	s.mock.ExpectBegin()
-	s.mock.ExpectExec("INSERT").WithArgs(account_id, operation_id, amount, sqlmock.AnyArg()).WillReturnError(errors.New("error"))
+	s.mock.ExpectExec("INSERT").WithArgs(account_id, operation_id, -(amount), sqlmock.AnyArg()).WillReturnError(errors.New("error"))
 	s.mock.ExpectRollback()
 	req, _ = http.NewRequest(http.MethodPost, "/transactions", internalBody)
 	r.ServeHTTP(w, req)
 
 	/* Success case */
-	successRequestBody := `{"account_id": 1, "operation_id": 1, "amount": 5}`
+	successRequestBody := `{"account_id": 1, "operation_id": 4, "amount": 5}`
 	successBody := strings.NewReader(string(successRequestBody))
 	s.mock.ExpectBegin()
-	s.mock.ExpectExec("INSERT").WithArgs(account_id, operation_id, amount, sqlmock.AnyArg()).WillReturnResult(sqlmock.NewResult(1, 1))
+	s.mock.ExpectExec("INSERT").WithArgs(account_id, payment_operation_id, amount, sqlmock.AnyArg()).WillReturnResult(sqlmock.NewResult(1, 1))
 	s.mock.ExpectCommit()
 	req, _ = http.NewRequest(http.MethodPost, "/transactions", successBody)
 	r.ServeHTTP(w, req)

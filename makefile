@@ -3,7 +3,6 @@ install:
 	@go get
 	@echo "Validating dependecies..."
 	@go mod tidy
-	@echo "Creating vendor..."
 
 build:
 	@echo "Building project..."
@@ -23,7 +22,6 @@ run:
 
 clean:
 	@echo "Cleaning up project..."
-	@rm -rf ./vendor
 	@rm -rf ./go.sum
 	@rm -rf ./pismo
 	@echo "Project cleaned successfully."
